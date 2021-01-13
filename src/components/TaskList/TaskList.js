@@ -54,24 +54,32 @@ export default function TaskList() {
                 </div>
                 <div className="dataContainer">
                   <div className="topDataContainer">
-                    <h3>Author: {task.username}</h3>
-                    <h4>Contacts: {task.email}</h4>
+                    <h3>
+                      Author: <b>{task.username}</b>
+                    </h3>
+                    <h4>
+                      Contacts: <b>{task.email}</b>
+                    </h4>
                   </div>
-                  <p>TODO: {task.text}</p>
-                  <p
+                  <h4>
+                    TODO: <b>{task.text}</b>
+                  </h4>
+                  <h4
                     style={{
                       color: task.status === 10 ? "green" : "red",
                     }}
                   >
-                    Status: {task.status === 10 ? "Done" : "Undone"}
-                  </p>
+                    Status: <b>{task.status === 10 ? "Done" : "Undone"}</b>
+                  </h4>
                   <div className="bottomTaskContainer">
                     {admin && (
-                      <Button>
-                        <Link to={`/edittask/${task.id}`}>Edit</Link>
-                      </Button>
+                      <>
+                        <Button>
+                          <Link to={`/edittask/${task.id}`}>Edit</Link>
+                        </Button>
+                        {task.edited && <p>Edited By Admin</p>}
+                      </>
                     )}
-                    {task.edited && <p>Edited By Admin</p>}
                   </div>
                 </div>
               </div>

@@ -1,7 +1,5 @@
 # Beejee-test
 
-## Available Scripts
-
 ### `yarn`
 
 Downloads all dependencies
@@ -10,5 +8,10 @@ Downloads all dependencies
 
 Launches the app.
 
-#
-Use with pleasure
+## Home page:
+![screenshot](readme-assets/home.png)
+## Adding new task:
+![screenshot](readme-assets/adding.png)
+## Login as admin:
+![screenshot](readme-assets/login.png)
+##  Use with pleasure!
