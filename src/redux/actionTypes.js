@@ -1,0 +1,12 @@
+export const SET_TASKS = "SET_TASKS";
+export const ADD_TASK = "ADD_TASK";
+export const LOGIN = "LOGIN";
+export const SET_TOKEN = "SET_TOKEN";
+export const EDIT_TASK = "EDIT_TASK";
+export const LOGOUT = "LOGOUT";
+export const BY_NAME = "BY_NAME";
+export const BY_EMAIL = "BY_EMAIL";
+export const BY_STATUS = "BY_STATUS";
+export const SORT_TYPE = "SORT_TYPE";
+export const TO_LOWEST = "TO_LOWEST";
+export const TO_HIGHEST = "TO_HIGHEST";
