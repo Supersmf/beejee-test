@@ -52,7 +52,6 @@ export default function EditTask() {
       modal.destroy();
     }, 400);
   };
-
   return (
     <>
       <div className="container">
@@ -66,7 +65,7 @@ export default function EditTask() {
               name="basic"
               onFinish={onFinish}
               initialValues={{
-                remember: false,
+                status: currentTask.status === 10 ? true : false,
               }}
             >
               <Form.Item
