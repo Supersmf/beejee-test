@@ -26,10 +26,10 @@ export default function EditTask() {
   };
   const tailLayout = {
     wrapperCol: {
-      offset: 11,
+      offset: 8,
+      span: 20,
     },
   };
-
   useEffect(() => {
     if (admin !== JSON.parse(localStorage.getItem("admin"))) {
       dispatch(login(false));
@@ -59,40 +59,43 @@ export default function EditTask() {
           <Link to="/">Back</Link>
         </Button>
         <div className="formContainer">
-          <div className="form">
-            <Form
-              {...layout}
-              name="basic"
-              onFinish={onFinish}
-              initialValues={{
-                status: currentTask.status === 10 ? true : false,
-              }}
+          <Form
+            {...layout}
+            name="basic"
+            onFinish={onFinish}
+            initialValues={{
+              status: currentTask.status === 10 ? true : false,
+            }}
+          >
+            <Form.Item
+              label="TODO"
+              name="text"
+              initialValue={currentTask.text}
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your task!",
+                },
+              ]}
             >
-              <Form.Item
-                label="TODO"
-                name="text"
-                initialValue={currentTask.text}
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your task!",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
+              <Input />
+            </Form.Item>
 
-              <Form.Item {...tailLayout} name="status" valuePropName="checked">
+            <div className="submitButtonContainer">
+              <Form.Item
+                className="editCheckbox"
+                name="status"
+                valuePropName="checked"
+              >
                 <Checkbox>Status</Checkbox>
               </Form.Item>
-
-              <Form.Item {...tailLayout}>
+              <Form.Item>
                 <Button type="primary" htmlType="submit">
                   Edit
                 </Button>
               </Form.Item>
-            </Form>
-          </div>
+            </div>
+          </Form>
         </div>
       </div>
     </>

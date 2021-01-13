@@ -21,21 +21,21 @@ export default function TaskList() {
   return (
     <>
       <div className="container">
-        <div className="listContainer">
-          <h1>Task List</h1>
-          <div className="linksContaier">
+        <h1>Task List</h1>
+        <div className="linksContaier">
+          <Button>
+            <Link to="/addtask">Add new Task</Link>
+          </Button>
+          <SortButton />
+          {!admin ? (
             <Button>
-              <Link to="/addtask">Add new Task</Link>
+              <Link to="/login">Sign In as Admin</Link>
             </Button>
-            <SortButton />
-            {!admin ? (
-              <Button>
-                <Link to="/login">Sign In as Admin</Link>
-              </Button>
-            ) : (
-              <Logout />
-            )}
-          </div>
+          ) : (
+            <Logout />
+          )}
+        </div>
+        <div className="listContainer">
           <List
             pagination={{
               total: tasks.length,
@@ -44,14 +44,12 @@ export default function TaskList() {
             dataSource={tasks}
             renderItem={(task) => (
               <div key={Math.random()} className="taskContainer">
-                <div className="imgContainer">
-                  <img
-                    width="200"
-                    height="200"
-                    src={task.image_path ? task.image_path : taskImg}
-                    alt="No img"
-                  />
-                </div>
+                <img
+                  width="200"
+                  height="200"
+                  src={task.image_path ? task.image_path : taskImg}
+                  alt="No img"
+                />
                 <div className="dataContainer">
                   <div className="topDataContainer">
                     <h3>
@@ -61,16 +59,18 @@ export default function TaskList() {
                       Contacts: <b>{task.email}</b>
                     </h4>
                   </div>
-                  <h4>
-                    TODO: <b>{task.text}</b>
-                  </h4>
-                  <h4
-                    style={{
-                      color: task.status === 10 ? "green" : "red",
-                    }}
-                  >
-                    Status: <b>{task.status === 10 ? "Done" : "Undone"}</b>
-                  </h4>
+                  <div className="middleTaskContainer">
+                    <h4>
+                      TODO: <b>{task.text}</b>
+                    </h4>
+                    <h4
+                      style={{
+                        color: task.status === 10 ? "green" : "red",
+                      }}
+                    >
+                      Status: <b>{task.status === 10 ? "Done" : "Undone"}</b>
+                    </h4>
+                  </div>
                   <div className="bottomTaskContainer">
                     {admin && (
                       <>

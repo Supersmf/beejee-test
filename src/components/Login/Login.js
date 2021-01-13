@@ -17,11 +17,6 @@ export default function Login() {
       span: 12,
     },
   };
-  const tailLayout = {
-    wrapperCol: {
-      offset: 11,
-    },
-  };
 
   useEffect(() => {
     if (admin === true) {
@@ -47,41 +42,41 @@ export default function Login() {
           <Link to="/">Back</Link>
         </Button>
         <div className="formContainer">
-          <div className="form">
-            <Form {...layout} name="basic" onFinish={onFinish}>
-              <Form.Item
-                label="Username"
-                name="username"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your username!",
-                  },
-                ]}
-              >
-                <Input />
-              </Form.Item>
+          <Form {...layout} name="basic" onFinish={onFinish}>
+            <Form.Item
+              label="Username"
+              name="username"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your username!",
+                },
+              ]}
+            >
+              <Input />
+            </Form.Item>
 
-              <Form.Item
-                label="Password"
-                name="password"
-                rules={[
-                  {
-                    required: true,
-                    message: "Please input your password!",
-                  },
-                ]}
-              >
-                <Input.Password />
-              </Form.Item>
+            <Form.Item
+              label="Password"
+              name="password"
+              rules={[
+                {
+                  required: true,
+                  message: "Please input your password!",
+                },
+              ]}
+            >
+              <Input.Password />
+            </Form.Item>
 
-              <Form.Item {...tailLayout}>
+            <div className="submitButtonContainer">
+              <Form.Item>
                 <Button type="primary" htmlType="submit">
                   Sign In
                 </Button>
               </Form.Item>
-            </Form>
-          </div>
+            </div>
+          </Form>
         </div>
       </div>
     </>

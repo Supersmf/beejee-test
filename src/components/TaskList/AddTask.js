@@ -16,11 +16,6 @@ export default function AddTask() {
       span: 12,
     },
   };
-  const tailLayout = {
-    wrapperCol: {
-      offset: 11,
-    },
-  };
 
   const onFinish = (task) => {
     const modal = Modal.success({
@@ -41,52 +36,52 @@ export default function AddTask() {
         <Link to="/">Back</Link>
       </Button>
       <div className="formContainer">
-        <div className="form">
-          <Form {...layout} name="basic" onFinish={onFinish}>
-            <Form.Item
-              label="Name"
-              name="username"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your Name!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="Email"
-              name="email"
-              rules={[
-                {
-                  required: true,
-                  type: "email",
-                  message: "Please input your Email!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item
-              label="TODO"
-              name="text"
-              rules={[
-                {
-                  required: true,
-                  message: "Please input your task!",
-                },
-              ]}
-            >
-              <Input />
-            </Form.Item>
-            <Form.Item {...tailLayout}>
+        <Form {...layout} name="basic" onFinish={onFinish}>
+          <Form.Item
+            label="Name"
+            name="username"
+            rules={[
+              {
+                required: true,
+                message: "Please input your Name!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="Email"
+            name="email"
+            rules={[
+              {
+                required: true,
+                type: "email",
+                message: "Please input your Email!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <Form.Item
+            label="TODO"
+            name="text"
+            rules={[
+              {
+                required: true,
+                message: "Please input your task!",
+              },
+            ]}
+          >
+            <Input />
+          </Form.Item>
+          <div className="submitButtonContainer">
+            <Form.Item>
               <Button type="primary" htmlType="submit">
                 Add
               </Button>
             </Form.Item>
-          </Form>
-        </div>
+          </div>
+        </Form>
       </div>
     </div>
   );
