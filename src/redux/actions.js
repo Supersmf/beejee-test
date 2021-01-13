@@ -10,12 +10,11 @@ import {
   TO_HIGHEST,
 } from "./actionTypes";
 import { Modal } from "antd";
+import env from "react-dotenv";
 
 export function getTasks() {
   return async function (dispatch) {
-    const response = await fetch(
-      "https://uxcandy.com/~shapoval/test-task-backend/v2/?developer=Ivan"
-    );
+    const response = await fetch(`${env.FETCH_URL}/?developer=Ivan`);
     const result = await response.json();
     dispatch(setTasks(result.message.tasks));
   };
@@ -34,14 +33,11 @@ export function sendNewTask(task) {
   form.append("email", task.email);
   form.append("text", task.text);
 
-  return async function (dispatch) {
-    await fetch(
-      "https://uxcandy.com/~shapoval/test-task-backend/v2/create?developer=Ivan",
-      {
-        method: "POST",
-        body: form,
-      }
-    );
+  return async function () {
+    await fetch(`${env.FETCH_URL}/create?developer=Ivan`, {
+      method: "POST",
+      body: form,
+    });
   };
 }
 
@@ -58,13 +54,10 @@ export function checkAdmin(values) {
   form.append("password", values.password);
 
   return async function (dispatch) {
-    const response = await fetch(
-      "https://uxcandy.com/~shapoval/test-task-backend/v2/login?developer=Ivan",
-      {
-        method: "POST",
-        body: form,
-      }
-    );
+    const response = await fetch(`${env.FETCH_URL}/login?developer=Ivan`, {
+      method: "POST",
+      body: form,
+    });
     const result = await response.json();
     if (result.status === "ok") {
       dispatch(login(true));
@@ -94,13 +87,10 @@ export function sendEditTask(token, taskId) {
   const form = new FormData();
   form.append("token", token);
   return async function () {
-    await fetch(
-      `https://uxcandy.com/~shapoval/test-task-backend/v2/edit/${taskId}?developer=Ivan`,
-      {
-        method: "POST",
-        body: form,
-      }
-    );
+    await fetch(`${env.FETCH_URL}/edit/${taskId}?developer=Ivan`, {
+      method: "POST",
+      body: form,
+    });
   };
 }
 export function editTask(task, taskId) {
